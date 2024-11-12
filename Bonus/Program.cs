@@ -67,6 +67,24 @@
             }
         }
         #endregion
+        //count the number of occurrences
+        #region count the number of occurrences
+        public static int CountTheNumberOfOccurrences(int[] array,int NummberWantToKnowCount)
+        {
+            int counter = 0; 
+            for(int i = 0;i<array.Length;i++)
+            {
+                if (NummberWantToKnowCount == array[i])
+               
+                    counter++;
+                else 
+                    continue;
+
+                
+            }
+            return counter;
+        }
+        #endregion
         static void Main(string[] args)
         {
             //create array 
@@ -77,11 +95,20 @@
             //reversed array 
             ReverseArray(ArrayOfNumbers);
             Console.WriteLine("Reversed Array  : ");
-            for (int i = 0; i < MaxOfTheArray; i++) 
+            for (int i = 0; i < ArrayOfNumbers.Length; i++)
             {
-                Console.WriteLine($"Element {i+1} : {ArrayOfNumbers[i]}");
+                Console.WriteLine($"Element {i + 1} : {ArrayOfNumbers[i]}");
             }
-
+            //count the number of occurrences
+            int NumberWantToSearch;
+            bool flag = true;
+            do
+            {
+                Console.WriteLine("Enter the number want to know how time it occurrences ");
+                flag = int.TryParse(Console.ReadLine(), out NumberWantToSearch);
+            } while (!flag);
+            int Count = CountTheNumberOfOccurrences(ArrayOfNumbers, NumberWantToSearch);
+            Console.WriteLine($"{NumberWantToSearch} Occurrences : {Count} Times  ");
         }
     }
 }
