@@ -26,10 +26,27 @@
             }
             return NumbersArray;
         }
+        #region Get Max Int
+        public static int GetMaxNumberOfTheArray(int[] Array)
+        {
+            int MaxNumber =Array[0];
+            for(int i = 0;i<Array.Length;i++)
+            {
+                if (MaxNumber < Array[i])
+                {
+                    MaxNumber = Array[i];
+                }
+            }
+            return MaxNumber;
+        }
+        #endregion
         static void Main(string[] args)
         {
             int[] ArrayOfNumbers = CreateArray();
-            
+            int MaxOfTheArray = GetMaxNumberOfTheArray(ArrayOfNumbers);
+            Console.WriteLine($"MAx Number in this array is : {MaxOfTheArray}");
+
+
         }
     }
 }
