@@ -1,4 +1,6 @@
-﻿namespace Bonus
+﻿using System.ComponentModel.Design;
+
+namespace Bonus
 {
     public class Program
     {
@@ -85,6 +87,48 @@
             return counter;
         }
         #endregion
+
+        //remove duplicate elements from an array
+        #region remove duplicate elements from an array
+        public static List<int> RemoveDuplicates(int[] array)
+        {
+            List<int> listWithOutDuplicate = new List<int>();
+            for(int i = 0; i< array.Length;i++)
+            {
+                if(!listWithOutDuplicate.Contains(array[i]))
+                {
+                    listWithOutDuplicate.Add(array[i]);
+                }
+            }
+            return listWithOutDuplicate;
+        }
+        #endregion
+
+        // find the second largest element in an array
+
+        #region FindTheSecondLargest
+        public static int FindTheSecondMaxArray(int[] array)
+        {
+            int FMax = array[0];
+            int SMax=array[1];
+            if(FMax < SMax)
+                Swap(ref FMax,ref SMax);
+            for(int i = 2;i< array.Length;i++)
+            {
+                if (FMax < array[i])
+                {
+                    SMax = FMax;
+                    FMax = array[i];
+                }
+                else if(SMax< array[i])
+                {
+                    SMax=array[i];
+                }
+                
+            }
+            return SMax;
+        }
+        #endregion
         static void Main(string[] args)
         {
             //create array 
@@ -109,6 +153,15 @@
             } while (!flag);
             int Count = CountTheNumberOfOccurrences(ArrayOfNumbers, NumberWantToSearch);
             Console.WriteLine($"{NumberWantToSearch} Occurrences : {Count} Times  ");
+            //list with out duplicate
+            List<int> ArrayWithOutDuplicate = RemoveDuplicates(ArrayOfNumbers);
+            foreach (int i in ArrayWithOutDuplicate)
+            {
+                Console.WriteLine($"Element {i + 1} : {ArrayOfNumbers[i]}");
+            }
+            //find the second largest element in an array
+            int SecondMax = FindTheSecondMaxArray(ArrayOfNumbers);
+            Console.WriteLine(SecondMax);
         }
     }
 }
