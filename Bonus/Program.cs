@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Xml.Linq;
 
 namespace Bonus
 {
@@ -129,6 +130,25 @@ namespace Bonus
             return SMax;
         }
         #endregion
+
+        //find the index of the minimum element in an array
+        #region find the index of the minimum element in an array
+        public static int MinElementIndex(int[]array)
+        {
+            int minElement = array[0];
+           int  MinElementIndex =0;
+            for(int i = 0;i< array.Length;i++)
+            {
+                if(minElement > array[i])
+                {
+                    minElement = array[i];
+                    MinElementIndex= i;
+                }
+                    
+            }
+            return MinElementIndex;
+        }
+        #endregion
         static void Main(string[] args)
         {
             //create array 
@@ -162,6 +182,9 @@ namespace Bonus
             //find the second largest element in an array
             int SecondMax = FindTheSecondMaxArray(ArrayOfNumbers);
             Console.WriteLine(SecondMax);
+            //find the index of the minimum element in an array
+            int MinIndex = MinElementIndex(ArrayOfNumbers);
+            Console.WriteLine(MinIndex);
         }
     }
 }
